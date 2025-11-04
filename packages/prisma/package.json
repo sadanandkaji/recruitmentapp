@@ -2,17 +2,19 @@
   "name": "@repo/db",
   "version": "1.0.0",
   "main": "index.js",
-  "exports":{
-   "./client":"./src/index.ts"
-  },
   "keywords": [],
+  "exports": {
+    "./client": "./src/index.ts"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
   "devDependencies": {
-    "@repo/typescript-config": "workspace:*"
+    "@prisma/client": "^6.1.0",
+    "@repo/typescript-config": "workspace:*",
+    "prisma": "^6.1.0"
   },
   "dependencies": {
-    "prisma": "^6.18.0"
+    "dotenv": "^17.2.3"
   }
 }
