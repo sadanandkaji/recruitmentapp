@@ -15,7 +15,9 @@ jobs:
 
       - name: Deploy to staging
         run: |
-          echo "${{ secrets.PRIVATE_SSH_KEY }}" &> ssh.key
+          echo "${{ secrets.PRIVATE_SSH_KEY }}" &> ~/ssh.key
+          mkdir .ssh
+          echo "${{ secrets.KNOWN_HOSTS }}" &> ~/.ssh/known_hosts
           ssh -i ssh.key ubuntu@13.50.245.231 
 
           cd recruitmentapp
