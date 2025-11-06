@@ -25,18 +25,24 @@ jobs:
 
           ssh -i /home/runner/ssh.key -o StrictHostKeyChecking=no ubuntu@16.170.221.229 << 'EOF'
             # Load environment
-            source ~/.bashrc
+            source ~/.profile || true
             export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
 
-            # Go to project
             cd ~/recruitmentapp
             git fetch origin production
             git reset --hard origin/production
+
+            # Ensure pnpm is installed
+            if ! command -v pnpm &> /dev/null; then
+              echo "Installing pnpm globally..."
+              npm install -g pnpm
+            fi
+
             pnpm install
             pnpm run build
-            pm2 restart http-server 
-            pm2 restart ws-server 
-            pm2 restart web-server 
+            pm2 restart http-server || pm2 start apps/http-server/server.js --name http-server
+            pm2 restart ws-server || pm2 start apps/ws-server/server.js --name ws-server
+            pm2 restart web-server || pm2 start apps/web/server.js --name web-server
 
             pm2 save
           EOF
