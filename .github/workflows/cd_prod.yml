@@ -26,19 +26,9 @@ jobs:
           ssh -i /home/runner/ssh.key ubuntu@16.170.221.229 << 'EOF'
           source ~/.bashrc
           export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
-
-
-          if ! command -v pnpm &> /dev/null
-          then
-            echo "Installing pnpm locally..."
-            corepack enable pnpm || npm install -g pnpm --prefix ~/.local
-            export PATH=$HOME/.local/bin:$PATH
-          fi
-
           cd ~/recruitmentapp
           git fetch origin production
           git reset --hard origin/production
-
           pnpm install
           pnpm run build
           pm2 restart http-server
