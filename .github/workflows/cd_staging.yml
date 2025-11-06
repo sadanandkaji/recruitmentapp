@@ -15,9 +15,9 @@ jobs:
 
       - name: Deploy to staging
         run: |
-          echo "${{ secrets.PRIVATE_SSH_KEY }}" > /home/runner/ssh_key
-          chmod 600 /home/runner/ssh_key
-          ls -l /home/runner/ssh_key
+          echo "${{ secrets.PRIVATE_SSH_KEY }}" > /home/runner/ssh.key
+          chmod 600 /home/runner/ssh.key
+          ls -l /home/runner/ssh.key
 
           mkdir -p /home/runner/.ssh
           ssh-keyscan -H 13.50.245.231 >> /home/runner/.ssh/known_hosts
