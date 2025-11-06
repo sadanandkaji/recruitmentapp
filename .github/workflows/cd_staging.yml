@@ -20,7 +20,7 @@ jobs:
 
       - name: SSH into server and deploy
         run: |
-          ssh -o StrictHostKeyChecking=no -i ssh.key ubuntu@13.50.245.231 << 'EOF'
+          ssh -i ssh.key ubuntu@13.50.245.231 
           cd recruitmentapp
           git fetch origin
           git checkout main
@@ -30,5 +30,4 @@ jobs:
           pm2 restart http-server
           pm2 restart ws-server
           pm2 restart web-server
-          EOF
 
