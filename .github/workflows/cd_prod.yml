@@ -29,8 +29,8 @@ jobs:
           export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
 
           cd ~/recruitmentapp
-          git fetch origin main
-          git reset --hard origin/main
+          git fetch origin production
+          git reset --hard origin/production
 
           pnpm install
           pnpm run build
