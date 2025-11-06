@@ -17,15 +17,17 @@ jobs:
         run: |
           echo "${{ secrets.PRIVATE_SSH_KEY }}" > /home/runner/ssh.key
           chmod 600 /home/runner/ssh.key
-          ls -l /home/runner/ssh.key  
-          mkdir -p /home/runner/.ssh
-          ls /home/runner/.ssh
-          touch /home/runner/.ssh/known_hosts
-          echo "${{ secrets.KNOWN_HOSTS }}" &> /home/runner/.ssh/known_hosts
-          chmod 700 /home/runner/.ssh
-          ssh -i ssh.key ubuntu@13.50.245.231 
+          ls -l /home/runner/ssh.key
 
-          cd recruitmentapp
+          mkdir -p /home/runner/.ssh
+          ssh-keyscan -H 13.50.245.231 >> /home/runner/.ssh/known_hosts
+          chmod 700 /home/runner/.ssh
+
+          ssh -o StrictHostKeyChecking=no -i /home/runner/ssh.key ubuntu@13.50.245.231 << 'EOF'
+          source ~/.bashrc
+          export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
+
+          cd ~/recruitmentapp
           git fetch origin main
           git reset --hard origin/main
 
@@ -34,5 +36,6 @@ jobs:
           pm2 restart http-server
           pm2 restart ws-server
           pm2 restart web-server
+          EOF
 
 
