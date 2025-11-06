@@ -21,7 +21,6 @@ jobs:
       - name: SSH into server and deploy
         run: |
           ssh -o StrictHostKeyChecking=no -i ssh.key ubuntu@13.50.245.231 << 'EOF'
-          export PATH=$PATH:/usr/local/bin
           cd recruitmentapp
           git fetch origin
           git checkout main
