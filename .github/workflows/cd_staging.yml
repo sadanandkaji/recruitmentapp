@@ -26,7 +26,7 @@ jobs:
 
           ssh -i /home/runner/ssh.key ubuntu@13.50.245.231 << 'EOF'
           source ~/.bashrc
-          
+          export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
 
           cd ~/recruitmentapp
           git fetch origin main
