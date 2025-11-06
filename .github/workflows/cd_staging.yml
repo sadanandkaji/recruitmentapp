@@ -13,21 +13,23 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up SSH key
+      - name: Deploy to staging
         run: |
           echo "${{ secrets.PRIVATE_SSH_KEY }}" > ssh.key
           chmod 600 ssh.key
+          ssh -o StrictHostKeyChecking=no -i ssh.key ubuntu@13.50.245.231 << 'EOF'
+          source ~/.bashrc
+          export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
 
-      - name: SSH into server and deploy
-        run: |
-          ssh -i ssh.key ubuntu@13.50.245.231 
-          cd recruitmentapp
-          git fetch origin
-          git checkout main
+          cd ~/recruitmentapp
+          git fetch origin main
           git reset --hard origin/main
+
           pnpm install
           pnpm run build
           pm2 restart http-server
           pm2 restart ws-server
           pm2 restart web-server
+          EOF
+
 
