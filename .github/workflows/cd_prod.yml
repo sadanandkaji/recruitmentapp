@@ -8,35 +8,35 @@ on:
 jobs:
   redeploy-everything:
     runs-on: ubuntu-latest
-    name: Deploying everything to staging cluster
+    name: Deploying everything to production cluster
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy to staging
+      - name: Deploy to production
         run: |
           echo "${{ secrets.PRIVATE_SSH_KEY }}" > /home/runner/ssh.key
           chmod 600 /home/runner/ssh.key
-          ls -l /home/runner/ssh.key
 
           mkdir -p /home/runner/.ssh
           echo "${{ secrets.KNOWN_HOSTS_PROD }}" > /home/runner/.ssh/known_hosts
           chmod 700 /home/runner/.ssh
           chmod 600 /home/runner/.ssh/known_hosts
 
-          ssh -i /home/runner/ssh.key ubuntu@16.170.221.229 << 'EOF'
-          source ~/.bashrc
-          export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
+          ssh -i /home/runner/ssh.key -o StrictHostKeyChecking=no ubuntu@16.170.221.229 << 'EOF'
+            # Load environment
+            source ~/.bashrc
+            export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
 
-          cd ~/recruitmentapp
-          git fetch origin production
-          git reset --hard origin/production
+            # Go to project
+            cd ~/recruitmentapp
+            git fetch origin production
+            git reset --hard origin/production
+            pnpm install
+            pnpm run build
+            pm2 restart http-server 
+            pm2 restart ws-server 
+            pm2 restart web-server 
 
-          pnpm install
-          pnpm run build
-          pm2 restart http-server
-          pm2 restart ws-server
-          pm2 restart web-server
+            pm2 save
           EOF
-
-
