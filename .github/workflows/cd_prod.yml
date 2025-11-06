@@ -27,6 +27,7 @@ jobs:
           source ~/.bashrc
           export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
 
+
           if ! command -v pnpm &> /dev/null
           then
             echo "Installing pnpm locally..."
