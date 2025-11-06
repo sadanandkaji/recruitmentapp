@@ -1,0 +1,25 @@
+name: Deploy to staging
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  redeploy-everything:
+    runs-on: ubuntu-latest
+    name: deploying everything to staging cluster
+    steps:
+      - name: ssh into server
+        run: |
+          echo "${{ secrets.PRIVATE_SSH_KEY }}" > ssh.key
+          ssh -i ~/ssh.key ubuntu@13.50.245.231
+          cd recruitmentapp/ && git pull 
+          pnpm install
+          pnpm run build
+          pm2 restart http-server
+          pm2 restart ws-server
+          pm2 restart web-server
+        
+        
+
+    
