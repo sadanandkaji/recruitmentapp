@@ -23,8 +23,9 @@ jobs:
           ssh-keyscan -H 13.50.245.231 >> /home/runner/.ssh/known_hosts
           chmod 700 /home/runner/.ssh
 
-          ssh -o StrictHostKeyChecking=no -i /home/runner/ssh.key ubuntu@13.50.245.231 << 'EOF'
-         
+          ssh -o StrictHostKeyChecking=no -i /home/runner/ssh.key ubuntu@13.50.245.231
+          source ~/.bashrc
+          export PATH=$HOME/.nvm/versions/node/v22.21.0/bin:$PATH
 
           cd ~/recruitmentapp
           git fetch origin main
@@ -35,6 +36,6 @@ jobs:
           pm2 restart http-server
           pm2 restart ws-server
           pm2 restart web-server
-          EOF
+          
 
 
