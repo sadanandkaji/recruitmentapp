@@ -21,13 +21,15 @@ jobs:
       - name: SSH into server and deploy
         run: |
           ssh -o StrictHostKeyChecking=no -i ssh.key ubuntu@13.50.245.231 << 'EOF'
-            cd recruitmentapp
-            git fetch origin
-            git checkout main
-            git reset --hard origin/main
-            pnpm install
-            pnpm run build
-            pm2 restart http-server
-            pm2 restart ws-server
-            pm2 restart web-server
+          export PATH=$PATH:/usr/local/bin
+          cd recruitmentapp
+          git fetch origin
+          git checkout main
+          git reset --hard origin/main
+          pnpm install
+          pnpm run build
+          pm2 restart http-server
+          pm2 restart ws-server
+          pm2 restart web-server
           EOF
+
