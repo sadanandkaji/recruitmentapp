@@ -25,6 +25,7 @@ jobs:
           chmod 600 /home/runner/.ssh/known_hosts
 
           ssh -i /home/runner/ssh.key ubuntu@13.50.245.231 << 'EOF'
+          source ~/.bashrc
           
 
           cd ~/recruitmentapp
