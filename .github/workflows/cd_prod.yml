@@ -1,0 +1,15 @@
+# name: Deploy to staging
+# on:
+#   push:
+#     branches:
+#       - "main"
+
+# jobs:
+#   redeploy-everything:
+#     name: deploying everything to staging cluster
+
+#     jobs:
+
+
+
+  
