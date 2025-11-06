@@ -20,8 +20,9 @@ jobs:
           ls -l /home/runner/ssh.key
 
           mkdir -p /home/runner/.ssh
-          ssh-keyscan -H 13.50.245.231 >> /home/runner/.ssh/known_hosts
+          echo "${{ secrets.KNOWN_HOSTS }}" > /home/runner/.ssh/known_hosts
           chmod 700 /home/runner/.ssh
+          chmod 600 /home/runner/.ssh/known_hosts
 
           ssh -o StrictHostKeyChecking=no -i /home/runner/ssh.key ubuntu@13.50.245.231 << 'EOF'
           source ~/.bashrc
