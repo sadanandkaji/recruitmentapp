@@ -10,6 +10,9 @@ export default async function  Home() {
   const user= await client.users.findFirst()
   return (
     <div className={styles.page}>
+      <div>
+        hello there
+      </div>
     { user?.username}
      
     </div>
