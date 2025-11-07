@@ -46,7 +46,7 @@ export default function Navbar() {
               Mentorship
             </div>
             <div
-              onClick={() => handleNavigation("/competition")}
+              onClick={() => handleNavigation("/competitions")}
               className="cursor-pointer hover:text-blue-700"
             >
               Competition
