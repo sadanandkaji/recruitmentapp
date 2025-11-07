@@ -1,9 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const router = useRouter(); 
+
+
+   const handleNavigation = (path: string) => {
+    router.push(path);  
+    setMenuOpen(false);    
+  };
 
   return (
     <div className="bg-blue-300">
@@ -20,10 +29,23 @@ export default function Navbar() {
         {/* Center + Right for Desktop */}
         <div className="hidden sm:flex items-center gap-8 text-lg">
           <div className="flex gap-6">
-            <div className="cursor-pointer">Internships</div>
-            <div className="cursor-pointer">Jobs</div>
-            <div className="cursor-pointer">Mentorship</div>
-            <div className="cursor-pointer">Competition</div>
+
+            <div 
+             onClick={() => handleNavigation("/internships")}
+            className="cursor-pointer">Internships</div>
+
+            <div 
+            onClick={() => handleNavigation("/jobs")}
+            className="cursor-pointer">Jobs</div>
+
+            <div 
+            onClick={() => handleNavigation("/mentorships")}
+            className="cursor-pointer">Mentorship</div>
+
+            <div              
+            onClick={() => handleNavigation("/competitions")}
+            className="cursor-pointer">Competition</div>
+
           </div>
           <div className="flex gap-2 text-lg">
             <div className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer">
@@ -47,7 +69,7 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="flex flex-col items-start bg-blue-200 px-4 py-3 space-y-3 sm:hidden">
-          <div className="cursor-pointer w-full">Internships</div>
+          <div className="cursor-pointer w-full ">Internships</div>
           <div className="cursor-pointer w-full">Jobs</div>
           <div className="cursor-pointer w-full">Mentorship</div>
           <div className="cursor-pointer w-full">Competition</div>
