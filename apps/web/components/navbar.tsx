@@ -100,7 +100,7 @@ export default function Navbar() {
             Mentorship
           </div>
           <div
-            onClick={() => handleNavigation("/competition")}
+            onClick={() => handleNavigation("/competitions")}
             className="cursor-pointer w-full"
           >
             Competition
