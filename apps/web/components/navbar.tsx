@@ -1,17 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { useRouter } from "next/navigation";
-
+import { useRouter } from "next/navigation"; // ✅ import useRouter
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const router = useRouter(); 
+  const router = useRouter(); // ✅ initialize router
 
-
-   const handleNavigation = (path: string) => {
-    router.push(path);  
-    setMenuOpen(false);    
+  const handleNavigation = (path: string) => {
+    router.push(path);     // navigate programmatically
+    setMenuOpen(false);    // close mobile menu after navigation
   };
 
   return (
@@ -29,29 +27,43 @@ export default function Navbar() {
         {/* Center + Right for Desktop */}
         <div className="hidden sm:flex items-center gap-8 text-lg">
           <div className="flex gap-6">
-
-            <div 
-             onClick={() => handleNavigation("/internships")}
-            className="cursor-pointer">Internships</div>
-
-            <div 
-            onClick={() => handleNavigation("/jobs")}
-            className="cursor-pointer">Jobs</div>
-
-            <div 
-            onClick={() => handleNavigation("/mentorships")}
-            className="cursor-pointer">Mentorship</div>
-
-            <div              
-            onClick={() => handleNavigation("/competitions")}
-            className="cursor-pointer">Competition</div>
-
+            <div
+              onClick={() => handleNavigation("/internships")}
+              className="cursor-pointer hover:text-blue-700"
+            >
+              Internships
+            </div>
+            <div
+              onClick={() => handleNavigation("/jobs")}
+              className="cursor-pointer hover:text-blue-700"
+            >
+              Jobs
+            </div>
+            <div
+              onClick={() => handleNavigation("/mentorship")}
+              className="cursor-pointer hover:text-blue-700"
+            >
+              Mentorship
+            </div>
+            <div
+              onClick={() => handleNavigation("/competition")}
+              className="cursor-pointer hover:text-blue-700"
+            >
+              Competition
+            </div>
           </div>
+
           <div className="flex gap-2 text-lg">
-            <div className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer">
+            <div
+              onClick={() => handleNavigation("/signup")}
+              className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-green-300"
+            >
               Signup
             </div>
-            <div className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer">
+            <div
+              onClick={() => handleNavigation("/login")}
+              className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-green-300"
+            >
               Login
             </div>
           </div>
@@ -69,15 +81,41 @@ export default function Navbar() {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="flex flex-col items-start bg-blue-200 px-4 py-3 space-y-3 sm:hidden">
-          <div className="cursor-pointer w-full ">Internships</div>
-          <div className="cursor-pointer w-full">Jobs</div>
-          <div className="cursor-pointer w-full">Mentorship</div>
-          <div className="cursor-pointer w-full">Competition</div>
+          <div
+            onClick={() => handleNavigation("/internships")}
+            className="cursor-pointer w-full"
+          >
+            Internships
+          </div>
+          <div
+            onClick={() => handleNavigation("/jobs")}
+            className="cursor-pointer w-full"
+          >
+            Jobs
+          </div>
+          <div
+            onClick={() => handleNavigation("/mentorship")}
+            className="cursor-pointer w-full"
+          >
+            Mentorship
+          </div>
+          <div
+            onClick={() => handleNavigation("/competition")}
+            className="cursor-pointer w-full"
+          >
+            Competition
+          </div>
           <div className="flex gap-3 w-full justify-start pt-2">
-            <div className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer">
+            <div
+              onClick={() => handleNavigation("/signup")}
+              className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer"
+            >
               Signup
             </div>
-            <div className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer">
+            <div
+              onClick={() => handleNavigation("/login")}
+              className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer"
+            >
               Login
             </div>
           </div>

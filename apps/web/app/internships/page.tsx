@@ -2,7 +2,7 @@ export default async function Internships() {
 
 
   return (
-    <div>
+    <div className="flex justify-center items-center">
     this is Internships page
      
     </div>
