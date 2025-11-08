@@ -32,9 +32,9 @@ export default function AuthPage() {
     try {
       const res = await authapi(username, password, type);
 
-      if (res?.message === "signup successfull") {
+      if (res?.message === "Signup successful") {
         setMessage("Signup successful!");
-        setTimeout(() => router.push("/"), 1000); 
+        setTimeout(() => router.push("/signin"), 1000); 
       } else {
         setMessage("Signup failed. Try again.");
       }
