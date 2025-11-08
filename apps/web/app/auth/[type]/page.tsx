@@ -34,7 +34,7 @@ export default function AuthPage() {
 
       if (res?.message === "signup successfull") {
         setMessage("Signup successful!");
-        setTimeout(() => router.push("/internships"), 1000); 
+        setTimeout(() => router.push("/"), 1000); 
       } else {
         setMessage("Signup failed. Try again.");
       }

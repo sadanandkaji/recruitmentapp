@@ -66,7 +66,7 @@ export default function Navbar() {
 
         <div className=" text-sm   sm:text-lg font-bold">
             <div
-              onClick={() => handleNavigation("/auth")}
+              onClick={() => handleNavigation("/signin")}
               className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-green-300"
             >
               signup
