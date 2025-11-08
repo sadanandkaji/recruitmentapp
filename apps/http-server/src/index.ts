@@ -1,8 +1,10 @@
 import express from "express"
 import {client} from "@repo/db/client"
+import cors from "cors";
 
 
 const app = express();
+app.use(cors());
 app.use(express.json())
 
 app.get("/" ,(req,res)=>{
@@ -13,11 +15,13 @@ app.post("/signup",async (req,res)=>{
 
     const username=req.body.username;
     const password=req.body.password;
+    const type =req.body.type
 
    const user =await client.users.create({
         data:{
             username:username,
-            password:password
+            password:password,
+            type:type
         }
     })
 

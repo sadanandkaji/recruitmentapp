@@ -10,11 +10,7 @@ const server =new WebSocketServer({
 
 server.on("connection" , (socket)=>{
 
-    client.users.create({
-        data:{
-            username:Math.random().toString(),
-            password:Math.random().toString()
-        }
-    })
+   
+  
     socket.send("hi there you are connected")
 })
