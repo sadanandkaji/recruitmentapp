@@ -41,6 +41,12 @@ export default function Navbar() {
             >
               Internships
             </div>
+             <div
+              onClick={() => handleNavigation("/pages/profile")}
+              className="cursor-pointer hover:text-blue-700"
+            >
+              profile
+            </div>
             <div
               onClick={() => handleNavigation("/pages/jobs")}
               className="cursor-pointer hover:text-blue-700"
