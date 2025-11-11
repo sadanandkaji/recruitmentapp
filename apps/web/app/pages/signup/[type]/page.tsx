@@ -1,12 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useRouter, useParams } from "next/navigation";
 import { useRef, useState, useEffect } from "react";
 import { authapi } from "../../../../apis/authapi";
 import { Button } from "@repo/ui/button";
 
 export default function SignupPage() {
   const router = useRouter();
+  const params = useParams<{ type: string }>(); // get /signup/[type] param
+  const userType = params?.type || "student"; // fallback to student if not provided
+
   const [isClient, setIsClient] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -33,9 +36,11 @@ export default function SignupPage() {
     setMessage(null);
 
     try {
-      const res = await authapi(username, password, "signup");
+      // 🔹 Pass user type dynamically ("student" or "recruiter")
+      const res = await authapi(username, password, userType);
+
       if (res?.message === "Signup successful") {
-        setMessage("Signup successful!");
+        setMessage(`${userType} signup successful!`);
         setTimeout(() => router.push("/pages/signin"), 1000);
       } else {
         setMessage("Signup failed. Try again.");
@@ -51,8 +56,8 @@ export default function SignupPage() {
   return (
     <div className="pt-10 flex items-center justify-center min-h-screen bg-gray-100">
       <div className="bg-white shadow-md rounded-xl p-8 flex flex-col gap-5 w-80">
-        <h2 className="text-center text-2xl font-semibold text-gray-800">
-          Sign up
+        <h2 className="text-center text-2xl font-semibold text-gray-800 capitalize">
+          {userType} Sign Up
         </h2>
 
         <input
@@ -71,7 +76,7 @@ export default function SignupPage() {
 
         <Button
           variant="primary"
-          content={loading ? "Please wait..." : "Sign Up"}
+          content={loading ? "Please wait..." : `Sign Up as ${userType}`}
           onClick={handleSignup}
           loading={loading}
           fullWidth
