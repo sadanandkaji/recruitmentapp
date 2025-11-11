@@ -35,18 +35,20 @@ export default function Navbar() {
             >
               home
             </div>
+            
+            <div
+              onClick={() => handleNavigation("/pages/profile")}
+              className="cursor-pointer hover:text-blue-700"
+            >
+              home
+            </div>
             <div
               onClick={() => handleNavigation("/pages/internships")}
               className="cursor-pointer hover:text-blue-700"
             >
               Internships
             </div>
-             <div
-              onClick={() => handleNavigation("/pages/profile")}
-              className="cursor-pointer hover:text-blue-700"
-            >
-              profile
-            </div>
+           
             <div
               onClick={() => handleNavigation("/pages/jobs")}
               className="cursor-pointer hover:text-blue-700"
@@ -93,6 +95,12 @@ export default function Navbar() {
         <div className="flex flex-col items-start bg-blue-200 px-4 py-3 space-y-3 sm:hidden">
           <div
               onClick={() => handleNavigation("/")}
+              className="cursor-pointer hover:text-blue-700"
+            >
+              home
+            </div>
+             <div
+              onClick={() => handleNavigation("/pages/profile")}
               className="cursor-pointer hover:text-blue-700"
             >
               home
