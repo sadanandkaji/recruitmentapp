@@ -7,7 +7,7 @@ export default function Home() {
 
   const router=useRouter()
    const handleClick = (type:string) => {
-    router.push(`/auth/${type}`);
+    router.push(`/pages/signup/${type}`);
   };
 
   return (

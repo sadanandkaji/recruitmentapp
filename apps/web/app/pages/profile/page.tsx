@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { getProfile } from "../../apis/profile";
+import { getProfile } from "../../../apis/profile";
 
 export default function ProfilePage() {
   const router = useRouter();
@@ -18,7 +18,7 @@ export default function ProfilePage() {
         console.error(err);
         setError(err.message || "Unauthorized");
         // Redirect to signin if unauthorized
-        router.push("/signin");
+        router.push("/pages/signin");
       }
     };
 

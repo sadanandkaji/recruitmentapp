@@ -36,25 +36,25 @@ export default function Navbar() {
               home
             </div>
             <div
-              onClick={() => handleNavigation("/internships")}
+              onClick={() => handleNavigation("/pages/internships")}
               className="cursor-pointer hover:text-blue-700"
             >
               Internships
             </div>
             <div
-              onClick={() => handleNavigation("/jobs")}
+              onClick={() => handleNavigation("/pages/jobs")}
               className="cursor-pointer hover:text-blue-700"
             >
               Jobs
             </div>
             <div
-              onClick={() => handleNavigation("/mentorship")}
+              onClick={() => handleNavigation("/pages/mentorship")}
               className="cursor-pointer hover:text-blue-700"
             >
               Mentorship
             </div>
             <div
-              onClick={() => handleNavigation("/competitions")}
+              onClick={() => handleNavigation("/pages/competitions")}
               className="cursor-pointer hover:text-blue-700"
             >
               Competition
@@ -66,10 +66,10 @@ export default function Navbar() {
 
         <div className=" text-sm   sm:text-lg font-bold">
             <div
-              onClick={() => handleNavigation("/signin")}
+              onClick={() => handleNavigation("/pages/signin")}
               className="bg-green-200 px-3 py-2 rounded-lg cursor-pointer hover:bg-green-300"
             >
-              signup
+              signin
             </div>
           </div>
 
@@ -92,25 +92,25 @@ export default function Navbar() {
               home
             </div>
           <div
-            onClick={() => handleNavigation("/internships")}
+            onClick={() => handleNavigation("/pages/internships")}
             className="cursor-pointer w-full"
           >
             Internships
           </div>
           <div
-            onClick={() => handleNavigation("/jobs")}
+            onClick={() => handleNavigation("/pages/jobs")}
             className="cursor-pointer w-full"
           >
             Jobs
           </div>
           <div
-            onClick={() => handleNavigation("/mentorship")}
+            onClick={() => handleNavigation("/pages/mentorship")}
             className="cursor-pointer w-full"
           >
             Mentorship
           </div>
           <div
-            onClick={() => handleNavigation("/competitions")}
+            onClick={() => handleNavigation("/pages/competitions")}
             className="cursor-pointer w-full"
           >
             Competition
