@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://staging.1st-fedev.sadanandkaji.com";
+const BASE_URL = "https://staging.1st-httpdev.sadanandkaji.com";
 
 // Fetch logged-in user's profile
 export const getProfile = async () => {
