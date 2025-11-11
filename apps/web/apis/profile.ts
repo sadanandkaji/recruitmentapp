@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3001";
+const BASE_URL = "https://staging.1st-fedev.sadanandkaji.com";
 
 // Fetch logged-in user's profile
 export const getProfile = async () => {

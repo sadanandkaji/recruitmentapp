@@ -3,7 +3,7 @@ import axios from "axios";
 // Function to handle signin API call
 export const signin = async (username: string, password: string) => {
   try {
-    const res = await axios.post("http://localhost:3001/signin", {
+    const res = await axios.post("https://staging.1st-fedev.sadanandkaji.com/signin", {
       username,
       password,
     });
