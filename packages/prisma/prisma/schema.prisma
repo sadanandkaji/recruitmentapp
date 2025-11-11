@@ -1,8 +1,5 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+// This is your Prisma schema file
+// Docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
@@ -13,10 +10,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Users {
+  id        String    @id @default(uuid())
+  username  String    @unique
+  password  String
+  type      String?
+  userdesc  Userdesc?
+}
 
-model Users{
-  id String  @id @default(uuid())
-  username String @unique
-  password String 
-  type String? 
+model Userdesc {
+  id                Int       @id @default(autoincrement())
+  userId            String    @unique                     // Matches Users.id (UUID)
+  firstName         String
+  middleName        String?                              // optional
+  lastName          String
+  skills            String[]                             // array of skills (PostgreSQL recommended)
+  isExperienced     Boolean                              // true = experienced, false = fresher
+  yearsOfExperience Int?                                 // only if experienced
+  collegeName       String
+  course            String
+  passoutYear       Int
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  user              Users     @relation(fields: [userId], references: [id])
 }
