@@ -40,7 +40,7 @@ export default function Navbar() {
               onClick={() => handleNavigation("/pages/profile")}
               className="cursor-pointer hover:text-blue-700"
             >
-              home
+              profile
             </div>
             <div
               onClick={() => handleNavigation("/pages/internships")}
@@ -103,7 +103,7 @@ export default function Navbar() {
               onClick={() => handleNavigation("/pages/profile")}
               className="cursor-pointer hover:text-blue-700"
             >
-              home
+              profile
             </div>
           <div
             onClick={() => handleNavigation("/pages/internships")}
