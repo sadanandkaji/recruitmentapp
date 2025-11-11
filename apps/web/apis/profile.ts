@@ -10,7 +10,7 @@ export const getProfile = async () => {
   if (!token) throw new Error("No token found");
 
   try {
-    const res = await axios.get("http://localhost:3001/profile", {
+    const res = await axios.get("https://staging.1st-httpdev.sadanandkaji.com/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
